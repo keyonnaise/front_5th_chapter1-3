@@ -1,22 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  deepEquals,
-  deepMemo,
-  memo,
-  shallowEquals,
-  useCallback,
-  useDeepMemo,
-  useMemo,
-  useRef,
-} from "../@lib";
 import { act, fireEvent, render } from "@testing-library/react";
-import React, {
-  ComponentProps,
-  forwardRef,
-  useImperativeHandle,
-  useState,
-} from "react";
+import React, { ComponentProps, forwardRef, useImperativeHandle, useState } from "react";
+import { deepEquals, shallowEquals } from "../@lib/equalities";
+import { useCallback, useDeepMemo, useMemo, useRef } from "../@lib/hooks";
+import { deepMemo, memo } from "../@lib/hocs";
 
 describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
   describe("비교 함수 구현하기 > ", () => {
@@ -128,7 +116,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
           <>
             <UseMyRefTest label="rerender1" />
             <UseMyRefTest label="rerender2" />
-          </>,
+          </>
         );
 
         act(() => {
@@ -213,9 +201,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
         return (
           <div>
-            <button onClick={() => setRenderCount((prev) => prev + 1)}>
-              Force Render
-            </button>
+            <button onClick={() => setRenderCount((prev) => prev + 1)}>Force Render</button>
           </div>
         );
       });
@@ -324,9 +310,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
         return (
           <div>
-            <button onClick={() => setRenderCount((prev) => prev + 1)}>
-              Force Render
-            </button>
+            <button onClick={() => setRenderCount((prev) => prev + 1)}>Force Render</button>
           </div>
         );
       });
@@ -454,9 +438,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
         return (
           <div>
-            <button onClick={() => setRenderCount((prev) => prev + 1)}>
-              Force Render
-            </button>
+            <button onClick={() => setRenderCount((prev) => prev + 1)}>Force Render</button>
           </div>
         );
       });
@@ -521,9 +503,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
         return (
           <div>
-            <button onClick={() => setRenderCount((prev) => prev + 1)}>
-              Force Render
-            </button>
+            <button onClick={() => setRenderCount((prev) => prev + 1)}>Force Render</button>
           </div>
         );
       });
@@ -651,9 +631,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
       it("깊은 객체 비교를 수행해야 한다", () => {
         const DeepMemoizedComponent = deepMemo(TestComponent);
-        const { rerender } = render(
-          <DeepMemoizedComponent value={{ a: { b: 1 } }} />,
-        );
+        const { rerender } = render(<DeepMemoizedComponent value={{ a: { b: 1 } }} />);
 
         expect(TestComponent).toHaveBeenCalledTimes(1);
 
@@ -666,9 +644,7 @@ describe("Chapter 1-3 기본과제: hooks 구현하기 > ", () => {
 
       it("깊은 배열 비교를 수행해야 한다", () => {
         const DeepMemoizedComponent = deepMemo(TestComponent);
-        const { rerender } = render(
-          <DeepMemoizedComponent value={[1, [2, 3]]} />,
-        );
+        const { rerender } = render(<DeepMemoizedComponent value={[1, [2, 3]]} />);
 
         expect(TestComponent).toHaveBeenCalledTimes(1);
 
