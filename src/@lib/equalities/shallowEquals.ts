@@ -6,6 +6,10 @@ export function shallowEquals<T>(objA: T, objB: T): boolean {
   }
 
   if (Array.isArray(objA) && Array.isArray(objB)) {
+    if (objA.length !== objB.length) {
+      return false;
+    }
+
     return objA.every((current, i) => current === objB[i]);
   }
 
