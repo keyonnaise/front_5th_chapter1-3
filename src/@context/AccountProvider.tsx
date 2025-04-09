@@ -66,9 +66,9 @@ interface ContextActions {
   logout(): void;
 }
 
-export const [AccountStateProvider, useAccountStateProvider] =
+export const [AccountStateProvider, useAccountStateContext] =
   createSafeContext<ContextState>("AccountProvider");
-export const [AccountActionsProvider, useAccountActionsProvider] =
+export const [AccountActionsProvider, useAccountActionsContext] =
   createSafeContext<ContextActions>("AccountProvider");
 
 export default AccountProvider;

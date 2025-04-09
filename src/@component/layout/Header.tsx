@@ -1,4 +1,4 @@
-import { useAccountActionsProvider, useAccountStateProvider } from "../../@context/AccountProvider";
+import { useAccountActionsContext, useAccountStateContext } from "../../@context/AccountProvider";
 import { useNotificationActionsContext } from "../../@context/NotificationProvider";
 import { useThemeActionsContext, useThemeStateContext } from "../../@context/ThemeProvider";
 import { memo } from "../../@lib/hocs";
@@ -8,8 +8,8 @@ import { renderLog } from "../../utils";
 function Header() {
   renderLog("Header rendered");
 
-  const { user } = useAccountStateProvider("Header");
-  const { login, logout } = useAccountActionsProvider("Header");
+  const { user } = useAccountStateContext("Header");
+  const { login, logout } = useAccountActionsContext("Header");
   const { theme } = useThemeStateContext("Header");
   const { toggleTheme } = useThemeActionsContext("Header");
   const { addNotification } = useNotificationActionsContext("Header");

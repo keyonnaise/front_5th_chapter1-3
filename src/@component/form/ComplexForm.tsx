@@ -6,12 +6,12 @@ import {
 import { renderLog } from "../../utils";
 import { usePreservedCallback } from "../../@lib/hooks/usePreservedCallback";
 import { memo } from "../../@lib/hocs";
-import { useAccountStateProvider } from "../../@context/AccountProvider";
+import { useAccountStateContext } from "../../@context/AccountProvider";
 
 function ComplexForm() {
   renderLog("ComplexForm rendered");
 
-  useAccountStateProvider("ComplexForm");
+  useAccountStateContext("ComplexForm");
   useNotificationStateContext("ComplexForm");
   const { addNotification } = useNotificationActionsContext("ComplexForm");
 
