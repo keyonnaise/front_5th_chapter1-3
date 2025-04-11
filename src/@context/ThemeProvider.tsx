@@ -3,7 +3,7 @@ import { createSafeContext } from "./createSafeContext";
 import { useMemo } from "../@lib/hooks";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 function ThemeProvider({ children }: Props) {
